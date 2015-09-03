@@ -1,5 +1,7 @@
 Wheel::Application.routes.draw do
 
+  get 'post/index'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   # Authentication
@@ -59,6 +61,7 @@ Wheel::Application.routes.draw do
     end
   end
 
+  resources :posts
 
-  root 'home#index'
+  root 'posts#index'
 end

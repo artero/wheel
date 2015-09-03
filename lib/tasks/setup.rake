@@ -24,7 +24,8 @@ task setup_sample_data: [:environment, :not_production] do
   delete_all_records_from_all_tables
 
   create_user email: 'sam@example.com'
-
+  create_posts
+  
   puts 'sample data was added successfully'
 end
 
@@ -38,3 +39,7 @@ def create_user( options = {} )
   User.create! attributes
 end
 
+def create_posts
+  user = User.first
+  Post.create user: user, title: "Full Stack Fest is awesome", content: "Fullstackfest"
+end
